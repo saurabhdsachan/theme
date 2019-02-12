@@ -93,6 +93,11 @@ module.exports = function(webpackEnv) {
 		devtool: isEnvProduction ? (shouldUseSourceMap ? "source-map" : false) : isEnvDevelopment && "eval-source-map",
 
 		entry: [isEnvDevelopment && require.resolve("react-dev-utils/webpackHotDevClient"), paths.appIndexJs].filter(Boolean),
+		externals: {
+			"styled-components": {
+				amd: "styled-components"
+			}
+		},
 		output: {
 			path: isEnvProduction ? paths.appBuild : undefined,
 
