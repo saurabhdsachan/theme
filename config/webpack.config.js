@@ -93,11 +93,11 @@ module.exports = function(webpackEnv) {
 		devtool: isEnvProduction ? (shouldUseSourceMap ? "source-map" : false) : isEnvDevelopment && "eval-source-map",
 
 		entry: [isEnvDevelopment && require.resolve("react-dev-utils/webpackHotDevClient"), paths.appIndexJs].filter(Boolean),
+
 		externals: {
-			"styled-components": {
-				amd: "styled-components"
-			}
+			styled: "styled-components"
 		},
+
 		output: {
 			path: isEnvProduction ? paths.appBuild : undefined,
 
@@ -167,6 +167,7 @@ module.exports = function(webpackEnv) {
 
 			runtimeChunk: true
 		},
+
 		resolve: {
 			modules: ["node_modules"].concat(process.env.NODE_PATH.split(path.delimiter).filter(Boolean)),
 
